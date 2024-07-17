@@ -9,7 +9,7 @@ text_type_link = 'link'
 text_type_image = 'image' 
 
 class TextNode:
-    def __init__(self, text, text_type, url = None):
+    def __init__(self, text: str, text_type: str, url: str = None):
         self.text = text
         self.text_type = text_type
         self.url = url
@@ -22,23 +22,21 @@ class TextNode:
     def __repr__(self) -> str:
         return f"TextNode({self.text}, {self.text_type}, {self.url})"
     
-    def to_html_node(self) -> HTMLNode:
-        match self.text_type:
-            case "text":
+    def to_htmlnode(self) -> HTMLNode:
+            if self.text_type == text_type_text:
                 return LeafNode(None, self.text)
-            case "bold":
+            if self.text_type == text_type_bold:
                 return LeafNode("b", self.text)
-            case "italic":
+            if self.text_type == text_type_italic:
                 return LeafNode("i", self.text)
-            case "code":
+            if self.text_type == text_type_code:
                 return LeafNode("code", self.text)
-            case "link":
+            if self.text_type == text_type_link:
                 return LeafNode("a", self.text, props={"href": self.url})
-            case "image":
+            if self.text_type == text_type_image:
                 return LeafNode("img", None, props={
                     "src": self.url,
                     "alt": self.text
                 })
-            case _:
-                raise ValueError(f"Invalid text type: {self.text_type}")
-
+            
+            raise ValueError(f"Invalid text type: {self.text_type}")
