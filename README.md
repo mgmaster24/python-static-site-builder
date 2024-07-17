@@ -1,4 +1,3 @@
 # python-static-site-builder
 
-* Unordered
-* list
+Builds a static web page from markdown
