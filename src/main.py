@@ -33,6 +33,8 @@ def main():
     if len(sys.argv) > 1:
         base_path = sys.argv[1]
 
+    print(sys.argv)
+    print(base_path)
     src = "./static"
     dst = "./docs"
     print(f"Copying files from {src} to {dst}")
