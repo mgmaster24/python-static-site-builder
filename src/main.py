@@ -29,7 +29,7 @@ def copy_static_files(src_dir: str, dest_dir: str):
 
 
 def main():
-    base_path = "./"
+    base_path = "/"
     if len(sys.argv) > 1:
         base_path = sys.argv[1]
 
@@ -38,7 +38,7 @@ def main():
     print(f"Copying files from {src} to {dst}")
     copy_static_files(src, dst)
 
-    generate_pages_recursive(base_path, base_path + "content", "template.html", dst)
+    generate_pages_recursive(base_path, "./content", "template.html", dst)
 
 
 main()
